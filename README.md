@@ -45,8 +45,8 @@ The goal of this project is to bridge the education gap for students in rural ar
    git clone https://github.com/yourusername/sih2023_project.git
 
 ---
-###Navigate to the Project Directory
-```bash
-cd sih2023_project
-Run the Website Open index.html in any modern web browser to explore the platform.**
+2. **Navigate to the Project Directory**
+   ```bash
+      cd sih2023_project
+3. Run the Website Open index.html in any modern web browser to explore the platform.**
 
