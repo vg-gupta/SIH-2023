@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Missing Letter Game for Kids</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('YOUR_IMAGE_URL_HERE'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        #game-container {
+            margin: 20px auto;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        #sequence {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border: 2px solid #ff6b6b;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #user-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            border: 2px solid #ff6b6b;
+            border-radius: 5px;
+        }
+        #check-button, #play-again-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #check-button:hover, #play-again-button:hover {
+            background-color: #e04646;
+        }
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Missing Letter Game for Kids</h1>
+    <div id="game-container">
+        <p>Find the missing letter in the sequence:</p>
+        <p id="sequence"></p>
+        <input type="text" id="user-input" placeholder="Your answer" autofocus>
+        <button id="check-button">Check</button>
+        <p id="result"></p>
+        <button id="play-again-button">Play Again</button>
+    </div>
+
+    <script>
+        let sequence, missingIndex, missingValue;
+        let score = 0;
+
+        function generateSequence() {
+            const start = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+            const end = String.fromCharCode(start.charCodeAt(0) + Math.floor(Math.random() * 10) + 1);
+            sequence = Array.from({ length: end.charCodeAt(0) - start.charCodeAt(0) }, (_, i) => String.fromCharCode(start.charCodeAt(0) + i));
+            missingIndex = Math.floor(Math.random() * sequence.length);
+            missingValue = sequence[missingIndex];
+        }
+
+        function updateDisplay() {
+            document.getElementById("sequence").textContent = sequence
+                .slice(0, missingIndex)
+                .concat(["?"])
+                .concat(sequence.slice(missingIndex + 1))
+                .join(" ");
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("user-input").value.trim();
+            
+            if (userAnswer.toLowerCase() === missingValue.toLowerCase()) {
+                document.getElementById("result").textContent = "Correct!";
+                score++;
+            } else {
+                document.getElementById("result").textContent = `Wrong! The correct answer was ${missingValue}.`;
+            }
+
+            document.getElementById("check-button").disabled = true;
+            document.getElementById("user-input").disabled = true;
+            document.getElementById("play-again-button").style.display = "block";
+        }
+
+        function playAgain() {
+            generateSequence();
+            updateDisplay();
+            document.getElementById("user-input").value = "";
+            document.getElementById("result").textContent = "";
+            document.getElementById("check-button").disabled = false;
+            document.getElementById("user-input").disabled = false;
+            document.getElementById("play-again-button").style.display = "none";
+        }
+
+        document.getElementById("check-button").addEventListener("click", checkAnswer);
+        document.getElementById("play-again-button").addEventListener("click", playAgain);
+
+        generateSequence();
+        updateDisplay();
+    </script>
+</body>
+</html>

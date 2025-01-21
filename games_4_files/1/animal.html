@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #game-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #animal-image {
+            max-width: 100%;
+        }
+
+        #options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .option-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animal Guessing Game</h1>
+    <div id="game-container">
+        <img id="animal-image" src="" alt="Animal">
+        <div id="options">
+            <!-- Options will be generated here dynamically using JavaScript -->
+        </div>
+        <p id="result"></p>
+        <button id="next-button" style="display: none;">Next</button>
+    </div>
+
+    <script>
+        const animals = [
+            { name: "Dog", image: "dog1.png" },
+            { name: "Cat", image: "cat1.png" },
+            { name: "Elephant", image: "elephant1.png" },
+            // Add more animals with their images
+        ];
+
+        const animalImage = document.getElementById('animal-image');
+        const optionsContainer = document.getElementById('options');
+        const resultMessage = document.getElementById('result');
+        const nextButton = document.getElementById('next-button');
+
+        let currentAnimalIndex = 0;
+
+        function startGame() {
+            currentAnimalIndex = 0;
+            nextButton.style.display = 'none';
+            resultMessage.textContent = '';
+            loadAnimal();
+        }
+
+        function loadAnimal() {
+            const animal = animals[currentAnimalIndex];
+            animalImage.src = animal.image;
+            createOptions(animal);
+        }
+
+        function createOptions(animal) {
+            optionsContainer.innerHTML = '';
+
+            // Shuffle the animals to randomize the options
+            const shuffledAnimals = [...animals].sort(() => Math.random() - 0.5);
+
+            // Create buttons for options
+            shuffledAnimals.forEach((option) => {
+                const button = document.createElement('button');
+                button.textContent = option.name;
+                button.classList.add('option-button');
+                button.addEventListener('click', () => checkAnswer(option.name === animal.name));
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(isCorrect) {
+            if (isCorrect) {
+                resultMessage.textContent = 'Correct!';
+            } else {
+                resultMessage.textContent = 'Incorrect. Try again.';
+            }
+            nextButton.style.display = 'block';
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentAnimalIndex++;
+            if (currentAnimalIndex < animals.length) {
+                loadAnimal();
+            } else {
+                resultMessage.textContent = 'Game Over!';
+                nextButton.style.display = 'none';
+            }
+        });
+
+        // Start the game when the page loads
+        window.addEventListener('load', startGame);
+    </script>
+</body>
+</html>

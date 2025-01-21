@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features For Under Class 1</title>
+    <link rel="stylesheet" href="under1.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Hello Kids </h1>
+        <h2>Welcome To The Jungle Of Learnings</h2>
+        <div class="video">
+            <a href="videos.html" ><img class="icon-4 drop-anim"  id="iconn" src="video_lectures.png" alt="Video Lectures"></a>
+            
+        
+        
+        </div>
+        <br>
+            <!-- <div class="solution">
+            <a href="#solution " ><img class="icon-4 drop-anim"  id="iconn" src="solution.png" alt="Solutions"></a>
+        </div> -->
+        <!-- <div class="quiz">
+            <a href="#quiz " ><img class="icon-4 drop-anim"  id="iconn" src="quiz.png" alt="Quiz"></a>
+        </div> -->
+        <br>
+        <div class="game">
+            <a href="/Users/DELL/OneDrive/Desktop/SIH/games_4_files/1/main1.html" ><img class="icon-4 drop-anim"  id="iconn" src="game2.png" alt="Games"></a>
+        </div>
+        <br>
+        <!-- <div class="quiz">
+            <a href="#quiz " ><img class="icon-4 drop-anim"  id="iconn" src="mental_ability.png" alt="mental_ability"></a>
+        </div> -->
+        <div class="rewards">
+            <a href="#rewards" ><img class="icon-4 drop-anim"  id="iconn" src="rewards.png" alt="Rewards"></a>
+    
+            
+        </div>
+        <br>
+    </div>
+
+    <script>
+        const classIcons = document.querySelectorAll('.class-icon');
+        
+        // Add a click event listener to each class icon
+        classIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const selectedClass = icon.alt;
+                alert(`You selected ${selectedClass}`);
+                // You can redirect to another page or perform further actions here
+            });
+        });
+    </script>
+</body>
+</html>

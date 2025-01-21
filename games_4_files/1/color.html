@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Matching Game for 1-Year-Olds</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .color-button {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Matching Game</h1>
+    <div>
+        <p id="color-name">Match the color:</p>
+        <button class="color-button" style="background-color: red;" onclick="checkColor('Red')">Red</button>
+        <button class="color-button" style="background-color: blue;" onclick="checkColor('Blue')">Blue</button>
+        <button class="color-button" style="background-color: green;" onclick="checkColor('Green')">Green</button>
+        <button class="color-button" style="background-color: yellow;" onclick="checkColor('Yellow')">Yellow</button>
+    </div>
+    <div id="message"></div>
+
+    <script>
+        const colorNames = ['Red', 'Blue', 'Green', 'Yellow'];
+        let currentColor = '';
+
+        function getRandomColor() {
+            const randomIndex = Math.floor(Math.random() * colorNames.length);
+            currentColor = colorNames[randomIndex];
+            document.getElementById('color-name').textContent = `Match the color: ${currentColor}`;
+        }
+
+        function checkColor(color) {
+            const message = document.getElementById('message');
+            if (color === currentColor) {
+                message.textContent = 'Correct! You matched the color.';
+            } else {
+                message.textContent = 'Try again. This is not the correct color.';
+            }
+            getRandomColor();
+        }
+
+        // Initialize the game with the first color
+        getRandomColor();
+    </script>
+</body>
+</html>

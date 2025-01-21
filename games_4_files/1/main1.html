@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Grade Learning Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            background-image: url('5289.jpg'); /* Add the URL of your background image */
+            background-size: 100% 250%;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+
+        header {
+            /*background-color: #ff8c00;*/
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        nav {
+           /* background-color: #333;*/
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Added a semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-button {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .game-button:hover {
+            background-color: #0056b3;
+        }
+
+        .game-iframe {
+            border: none;
+            width: 100%;
+            height: 600px; /* Adjust the height as needed */
+            display: none; /* Initially hide the iframes */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white; text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00, 0 0 40px #00FF00, 0 0 50px #00FF00; border: 0px solid black;">
+            Kinder Garden Learning Games
+        </h1>
+    </header>
+    
+    <nav>
+        <ul style="display: flex; justify-content: center; padding: 0; border-radius: 50%;">
+            <li>
+                <button class="game-button" onclick="showGame('game1')">
+                    Animal Gussing Game
+
+                    
+                </button>
+            </li>
+            <li>
+                <button class="game-button" onclick="showGame('game2')">
+                   
+                    Letter Game
+                </button>
+            </li>
+            <li>
+                <button class="game-button" onclick="showGame('game3')">
+                   
+                     Color Matching Game
+                </button>
+            </li>
+        </ul>
+    </nav>
+    
+    
+    <div class="container">
+        <iframe id="game1" src="" class="game-iframe"></iframe>
+        <iframe id="game2" src="" class="game-iframe"></iframe>
+        <iframe id="game3" src="" class="game-iframe"></iframe>
+    </div>
+    
+    <script>
+        function showGame(gameId) {
+            // Hide all game iframes
+            var iframes = document.getElementsByClassName('game-iframe');
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].style.display = 'none';
+            }
+            
+            // Show the selected game iframe
+            var gameIframe = document.getElementById(gameId);
+            gameIframe.style.display = 'block';
+
+            // Set the source (src) of the game iframe here
+            if (gameId === 'game1') {
+                gameIframe.src = 'animal.html'; // Replace with the actual file path for the math game
+            } else if (gameId === 'game2') {
+                gameIframe.src = 'LETTER-GUSSING.html'; // Replace with the actual file path for the alphabet game
+            } else if (gameId === 'game3') {
+                gameIframe.src = 'color.html'; // Replace with the actual file path for the color matching game
+            }
+        }
+    </script>
+</body>
+</html>
